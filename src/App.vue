@@ -9,10 +9,23 @@
     },
     data () {
       return {
-        projects: []
+        projects: [],
+        lastPage: null,
+        currentPage: 1,
+        links: [],
       }
     },
     methods: {
+      resultsData(results) {
+
+          // gestire la paginazione
+          this.lastPage = results.last_page
+          this.currentPage= results.current_page
+
+          this.projects = results.data
+
+          console.log(this.projects)
+      },
       fetchProjects(page) {
         axios.get('http://127.0.0.1:8000/api/projects', {
           params: {
@@ -20,13 +33,16 @@
           }
         }) 
         .then(res => {
-          
-
-          const results = res.data.results
-
-          this.projects = results.data
-
-          console.log(this.projects)
+          this.resultsData(res.data.results)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      },
+      fetchProjectsByUrl(url) {
+        axios.get(url) 
+        .then(res => {
+          this.resultsData(res.data.results)
         })
         .catch(err => {
           console.log(err)
@@ -34,7 +50,7 @@
       }
     },
     mounted() {
-      this.fetchProjects(1)
+      this.fetchProjects(this.currentPage)
     }
   })
 
@@ -44,7 +60,23 @@
 
     <div class="posts">
       <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
-    </div> 
+    </div>
+    <div class="pagination">
+      <h1>
+        {{ currentPage }}
+      </h1>
+      <ul>
+          <li v-for="n in lastPage" @click="fetchProjects(n)" :key="n">
+            {{ n }}
+          </li>
+      </ul>
+
+      <ul>
+          <li v-for="link in links" @click="fetchProjectsByUrl(link.url)" :key="link.label">
+            {{ n }}
+          </li>
+      </ul>
+    </div>
 
 </template>
 

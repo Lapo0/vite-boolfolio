@@ -7,7 +7,7 @@
       }
     },
     mounted() {
-      console.log(this.project.technology)
+      console.log(this.project.type)
     },
   }
 </script>
