@@ -4,6 +4,8 @@ import Home from './pages/Home.vue'
 
 import Portfolio from './pages/Portfolio.vue'
 
+import AboutMe from './pages/AboutMe.vue'
+
 const router = createRouter({
     history: createWebHistory(),
 	routes: [
@@ -16,6 +18,11 @@ const router = createRouter({
 			path: '/portfolio',
 			name: 'portfolio',
 			component: Portfolio,
+		},
+        {
+			path: '/aboutMe',
+			name: 'aboutMe',
+			component: AboutMe,
 		},
     ],
 })
