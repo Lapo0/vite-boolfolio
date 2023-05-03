@@ -60,11 +60,13 @@
 
 <template>
 
+  <router-view></router-view>
+
     <div class="posts">
       <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
     </div>
-    <div class="pagination">
 
+    <div class="pagination">
       <ul>
           <li :class="[ link.active ? 'active' : '', 'page-link']" v-for="link in links" @click="fetchProjectsByUrl(link.url)" :key="link.label" v-html="link.label">
           </li>
