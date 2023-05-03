@@ -104,6 +104,7 @@
 
   .active {
     line-height: 1rem;
+    color: white !important;
   }
   
 
@@ -115,7 +116,8 @@
   }
 
   .pagination li:hover {
-    color: #000;
+    line-height: 1rem;
+    color: white;
     text-decoration: underline;
   }
 
