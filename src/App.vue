@@ -1,18 +1,18 @@
 <script>
-import NavBar from './components/NavBar.vue';
+import Layout from './layouts/Layout.vue';
 
 export default {
   components: {
-    NavBar,
+    Layout,
   }
 }
 </script>
 
 <template>
 
-  <NavBar></NavBar>
-
-  <router-view></router-view>
+  <Layout>
+    <router-view></router-view>
+  </Layout>
 
 </template>
 
