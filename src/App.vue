@@ -18,6 +18,8 @@
     methods: {
       resultsData(results) {
 
+          this.links = results.links
+
           // gestire la paginazione
           this.lastPage = results.last_page
           this.currentPage= results.current_page
@@ -62,35 +64,57 @@
       <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
     </div>
     <div class="pagination">
-      <h1>
-        {{ currentPage }}
-      </h1>
-      <ul>
-          <li v-for="n in lastPage" @click="fetchProjects(n)" :key="n">
-            {{ n }}
-          </li>
-      </ul>
 
       <ul>
-          <li v-for="link in links" @click="fetchProjectsByUrl(link.url)" :key="link.label">
-            {{ n }}
+          <li :class="[ link.active ? 'active' : '', 'page-link']" v-for="link in links" @click="fetchProjectsByUrl(link.url)" :key="link.label" v-html="link.label">
           </li>
       </ul>
     </div>
 
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .pagination h3 {
+    margin-right: 10px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .active {
+    line-height: 1rem;
+  }
+  
+
+  .pagination li {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #555;
+    font-size: 16px;
+  }
+
+  .pagination li:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+
+
 </style>
