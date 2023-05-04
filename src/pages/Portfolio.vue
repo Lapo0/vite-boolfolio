@@ -105,6 +105,7 @@
   .active {
     line-height: 1rem;
     color: white !important;
+    filter: drop-shadow(0px 0px 4px rgb(255, 255, 255));
   }
   
 
@@ -118,7 +119,7 @@
   .pagination li:hover {
     line-height: 1rem;
     color: white;
-    text-decoration: underline;
+    filter: drop-shadow(0px 0px 4px rgb(255, 255, 255));
   }
 
 
