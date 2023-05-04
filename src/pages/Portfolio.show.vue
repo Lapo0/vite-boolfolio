@@ -1,13 +1,15 @@
 <template>
     <div class="container">
-        <h1>VISTA SHOW</h1>
+        <h1>
+            {{ slug }}
+        </h1>
     </div>
   </template>
   
   <script>
 
     export default {
-      
+      props: ['slug'],
     }
   </script>
   
