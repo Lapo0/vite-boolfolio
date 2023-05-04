@@ -13,7 +13,7 @@
       props: ['slug'],
       methods: {
         fetchProject() {
-            axios.get(`http://localhost:5173/portfolio/${ this.slug }`)
+            axios.get(`http://127.0.0.1:8000/api/projects/${ this.slug }`)
             .then(res => {
                 console.log(res)
             })
